@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jmess;
-
+package client;
+import java.io.*;
+import java.net.*;
 /**
  *
  * @author MinhVu
  */
-public class JMess {
-
-    /**
-     * @param args the command line arguments
-     */
+public class Client {
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        Client_View screen = new Client_View();
+        screen.setVisible(true);
+        
+        screen.Connect();
     }
     
 }
