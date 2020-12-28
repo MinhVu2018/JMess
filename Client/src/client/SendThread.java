@@ -44,10 +44,7 @@ public class SendThread implements Runnable{
                         File f = new File(temp[3]);
                         
                         ProgressBar frame = new ProgressBar(f);
-                        frame.pack();
-                        frame.setLocationRelativeTo(null);
                         frame.setVisible(true);
-                        frame.displayProgress();
                         
                         String path = "," + temp[3];
                         Client.SendMsg = Client.SendMsg.replace(path, "");

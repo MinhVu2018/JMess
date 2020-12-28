@@ -84,14 +84,16 @@ public class ServerHandleClient implements Runnable{
                         
                         int length = dIn.readInt();
                         System.out.println("Byte length: " + length);
+//                        dIn.skip(dIn.available());
                         
                         byte[] bytes = new byte[length];
-                        dIn.readFully(bytes, 0, bytes.length); // read the message
+                        dIn.readFully(bytes, 0, length); // read the message
+                        
+                        String str = new String(bytes);
+                        System.out.println("Received bytes: " + new String(str));
                         
                         Files.write(Paths.get("D:/" + temp[2]), bytes);
                         Server.files.add(temp[2]);
-                        System.out.println("Available" + dIn.available());
-                        dIn.skip(length);
                         
                         //Notify to all clients
                         sendToAllClients("3", temp[1], "uploaded a new file(" + temp[2] + ")");
