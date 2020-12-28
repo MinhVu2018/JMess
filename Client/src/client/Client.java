@@ -6,17 +6,34 @@
 package client;
 import java.io.*;
 import java.net.*;
+
 /**
  *
  * @author MinhVu
  */
+
 public class Client {
+    public static Socket s;
+    public static String name = "";
     
-    public static void main(String[] args) {
-        Client_View screen = new Client_View();
-        screen.setVisible(true);
-        
-        screen.Connect();
+    public static String SendMsg = "";
+    public static String ReceiveMsg = "";
+    public static String Conversation = "";
+    
+    public static Client_LogIn login_screen = new Client_LogIn();
+    public static Client_SignUp signup_screen = new Client_SignUp();
+    public static Client_View main_screen = new Client_View();
+    static void ConnectToServer(){
+        try{
+            s = new Socket("localhost", 3200);
+            ClientHandleThread t = new ClientHandleThread();
+        }catch(IOException e){
+            System.out.println("There're some error");
+        }
+    }
+    
+    public static void main(String[] args) throws InterruptedException {
+        ConnectToServer();
     }
     
 }
